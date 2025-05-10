@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1><%=user  %> ke posts</h1>
+   <% if( blogs.length==0){ %>
+ <p>no posts yet</p>
+    <% } else
+    { %>
+    <% blogs.forEach(blog => {%>
+        <h2><%= blog.title %></h2>
+      
+        <p><%= blog.details %></p>
+        <button><a href="/posts/edit/<%=blog.id%>">edit post</a></button> 
+        <form action="/posts/delete/<%= blog._id %>?_method=DELETE" method="POST" style="display:inline;">
+    <button type="submit" onclick="return confirm('Delete karein?')">Delete Post</button>
+</form>
+
+    <%})%>;
+
+    <% }%>
+
+  
+</body>
+</html>
